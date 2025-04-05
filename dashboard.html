@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Flix - Dashboard</title>
+    <style>
+        /* General Styling */
+        body {
+            background-color: rgb(53, 56, 58);
+            color: rgb(170, 9, 103);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgb(53, 56, 58);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 3px solid red;
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 20px;
+        }
+
+        #search {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background-color: #222;
+            color: white;
+        }
+
+        /* Movie Grid */
+        .movies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .movie {
+            background-color: #dedfdd;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            width: 200px;
+        }
+
+        .movie:hover {
+            transform: scale(1.05);
+        }
+
+        .movie img {
+            width: 100%;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .movie-title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Logout Button */
+        .btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">Welcome to Infinity Flix 🎬</div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search for movies..." onkeyup="searchMovies()">
+    </div>
+
+    <!-- Movie List -->
+    <div class="movies-container" id="movies-list">
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Action Movie">
+            <div class="movie-title">Action Movie</div>
+        </div>
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Romantic Drama">
+            <div class="movie-title">Romantic Drama</div>
+        </div>
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Horror Thriller">
+            <div class="movie-title">Horror Thriller</div>
+        </div>
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Comedy Show">
+            <div class="movie-title">Comedy Show</div>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="btn" onclick="logout()">Logout</button>
+
+    <script>
+        // Search Movies Function
+        function searchMovies() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let movies = document.querySelectorAll(".movie");
+
+            movies.forEach(movie => {
+                let title = movie.querySelector(".movie-title").textContent.toLowerCase();
+                movie.style.display = title.includes(input) ? "block" : "none";
+            });
+        }
+
+        // Logout Function
+        function logout() {
+            if (confirm("Are you sure you want to logout?")) {
+                alert("You have been logged out!");
+                window.location.href = "index.html"; // Redirect to login page
+            }
+        }
+    </script>
+
+</body>
+</html>
